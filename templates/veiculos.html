@@ -14,7 +14,7 @@
         font-weight: 900;
         text-transform: uppercase;
         margin-bottom: 10px;
-        background: var(--red-gradient);
+        background: var(--blue-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -24,11 +24,11 @@
         font-size: 1rem;
     }
 
-    /* Barra de Filtros Avançada */
+    /* Barra de Filtros Estilizada com Azul Turbo */
     .filtros-box {
         background-color: var(--bg-card);
         border: 1px solid var(--border-card);
-        border-radius: 12px;
+        border-radius: 8px;
         padding: 20px 25px;
         margin-bottom: 35px;
         display: grid;
@@ -53,27 +53,27 @@
     }
 
     .filtro-control {
-        background-color: #080808;
-        border: 1px solid #262626;
+        background-color: #030305;
+        border: 1px solid #1f1f2e;
         color: var(--text-main);
         padding: 12px 15px;
-        border-radius: 8px;
+        border-radius: 6px;
         font-size: 0.95rem;
         outline: none;
         transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     .filtro-control:focus {
-        border-color: var(--red-primary);
-        box-shadow: 0 0 10px rgba(239, 68, 68, 0.25);
+        border-color: var(--blue-primary);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.25);
     }
 
     .btn-limpar {
         background: transparent;
-        border: 1px solid #333333;
+        border: 1px solid #333344;
         color: var(--text-muted);
         padding: 12px;
-        border-radius: 8px;
+        border-radius: 6px;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s;
@@ -82,34 +82,32 @@
     }
 
     .btn-limpar:hover {
-        background-color: #1a1a1a;
+        background-color: #111118;
         color: #ffffff;
-        border-color: var(--red-primary);
+        border-color: var(--blue-primary);
     }
 
-    /* Mensagem de nenhum resultado encontrado */
     .sem-resultados {
         grid-column: 1 / -1;
         text-align: center;
         padding: 60px 20px;
         background-color: var(--bg-card);
         border: 1px dashed var(--border-card);
-        border-radius: 12px;
+        border-radius: 8px;
         color: var(--text-muted);
         font-size: 1.1rem;
         display: none;
     }
 
-    /* Badge de ano nos cards */
     .card-badge {
         position: absolute;
         top: 12px;
         right: 12px;
-        background-color: rgba(0, 0, 0, 0.8);
-        border: 1px solid var(--red-primary);
+        background-color: rgba(0, 0, 0, 0.85);
+        border: 1px solid var(--blue-primary);
         color: #ffffff;
         padding: 4px 10px;
-        border-radius: 6px;
+        border-radius: 4px;
         font-size: 0.75rem;
         font-weight: 700;
         backdrop-filter: blur(4px);
@@ -123,7 +121,6 @@
 
 <!-- Caixa de Filtros de Navegação -->
 <div class="filtros-box">
-    <!-- Filtro por Marca -->
     <div class="filtro-group">
         <label for="filtroMarca">Marca</label>
         <select id="filtroMarca" class="filtro-control" onchange="filtrarVeiculos()">
@@ -135,13 +132,11 @@
         </select>
     </div>
 
-    <!-- Filtro por Modelo (Pesquisa em texto) -->
     <div class="filtro-group">
         <label for="filtroModelo">Modelo</label>
         <input type="text" id="filtroModelo" class="filtro-control" placeholder="Ex: 911, M3, Huracán..." onkeyup="filtrarVeiculos()">
     </div>
 
-    <!-- Filtro por Ano -->
     <div class="filtro-group">
         <label for="filtroAno">Ano</label>
         <select id="filtroAno" class="filtro-control" onchange="filtrarVeiculos()">
@@ -153,7 +148,6 @@
         </select>
     </div>
 
-    <!-- Botão Limpar Filtros -->
     <button class="btn-limpar" onclick="limparFiltros()">Limpar</button>
 </div>
 
@@ -165,14 +159,13 @@
          data-modelo="{{ veiculo.modelo | lower }}" 
          data-ano="{{ veiculo.ano }}">
          
-        <!-- Imagem e Etiqueta de Ano -->
         <div style="position: relative;">
             <img src="{{ veiculo.foto }}" alt="{{ veiculo.marca }} {{ veiculo.modelo }}" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80'">
             <span class="card-badge">{{ veiculo.ano }}</span>
         </div>
         
         <div class="card-body">
-            <span style="color: var(--red-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">{{ veiculo.marca }}</span>
+            <span style="color: var(--blue-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">{{ veiculo.marca }}</span>
             <h3>{{ veiculo.modelo }}</h3>
             <p>Ano: {{ veiculo.ano }} &bull; ID: {{ veiculo.id }}</p>
             
@@ -181,7 +174,6 @@
     </div>
     {% endfor %}
 
-    <!-- Mensagem de Alerta quando nenhum carro corresponde -->
     <div id="semResultadosMsg" class="sem-resultados">
         Nenhum veículo encontrado com os filtros selecionados. Tente refinar a busca.
     </div>
@@ -213,7 +205,6 @@
             }
         });
 
-        // Mostra ou oculta a mensagem de nenhum resultado
         const msgVazia = document.getElementById('semResultadosMsg');
         if (visiveis === 0) {
             msgVazia.style.display = "block";

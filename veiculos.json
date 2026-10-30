@@ -3,6 +3,7 @@
     "id": 1,
     "modelo": "911 Carrera",
     "marca": "Porsche",
+    "ano": 2024,
     "foto": "https://cdn.motor1.com/images/mgl/RqYwe3/s3/porsche-911-targa-4-gts-2024-im-test.webp",
     "opcionais": [
       "Freios de Cerâmica (PCCB)",
@@ -18,6 +19,7 @@
     "id": 2,
     "modelo": "Panamera",
     "marca": "Porsche",
+    "ano": 2024,
     "foto": "https://motorshow.com.br/wp-content/uploads/sites/2/2026/09/porsche-panamera-turbo-s-e-hybrid-2027-42-scaled.jpg",
     "opcionais": [
       "Bancos Massageadores com Ventilação",
@@ -30,6 +32,7 @@
     "id": 3,
     "modelo": "M3 Competition",
     "marca": "BMW",
+    "ano": 2023,
     "foto": "https://media.ed.edmunds-media.com/bmw/m3/2027/oem/2027_bmw_m3_sedan_competition-xdrive_fq_oem_1_815.jpg",
     "opcionais": [
       "Bancos Concha M Carbon",
@@ -38,14 +41,14 @@
       "M Drive Professional",
       "Head-Up Display",
       "Rodas Forjadas Aro 20\"",
-      "Freios M Carbon Ceramic",
-      "Volante M em Alcantara"
+      "Freios M Carbon Ceramic"
     ]
   },
   {
     "id": 4,
     "modelo": "S1000RR",
     "marca": "BMW",
+    "ano": 2024,
     "foto": "https://impaktechusa.com/cdn/shop/articles/DSC02006_website.jpg?v=1770340896&width=1000",
     "opcionais": [
       "Pacote M Competition",
@@ -59,20 +62,26 @@
     "id": 5,
     "modelo": "Panigale V4",
     "marca": "Ducati",
+    "ano": 2023,
     "foto": "https://s3.amazonaws.com/altimus2.arquivos.prod/d74051f0-8614-4832-9289-23de8d19a7d0/fotos/veiculo/d91dcbd4-e97b-483a-95d4-6df5e8246e2c/80d92d4b94d7444b8b76d8a87ece0015_1791219027208.jpg",
-    "opcionais": []
+    "opcionais": [
+      "Escapamento Full Akrapovič em Titânio",
+      "Rodas Forjadas Marchesini em Alumínio",
+      "Suspensão Eletrônica Öhlins NPX/TTX",
+      "Asas Aerodinâmicas em Carbono"
+    ]
   },
   {
     "id": 6,
     "modelo": "Mustang GT",
     "marca": "Ford",
+    "ano": 2024,
     "foto": "https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/03/novo-mustang-gt.jpeg?w=1320&h=742&crop=0&quality=90",
     "opcionais": [
       "Suspensão MagneRide",
       "Sistema de Som Bang & Olufsen",
       "Escapamento com Válvula Ativa",
       "Aerofólio Esportivo Traseiro",
-      "Painel Digital Configurável de 12.4\"",
       "Freios Brembo de Alta Performance"
     ]
   },
@@ -80,6 +89,7 @@
     "id": 7,
     "modelo": "Camaro SS",
     "marca": "Chevrolet",
+    "ano": 2022,
     "foto": "https://revistacarro.com.br/wp-content/uploads/2019/01/Camaro-11.jpg",
     "opcionais": [
       "Head-Up Display Colorido",
@@ -91,6 +101,7 @@
     "id": 8,
     "modelo": "Corvette Z06",
     "marca": "Chevrolet",
+    "ano": 2024,
     "foto": "https://cdn.planetcarsz.com/carros/2026/09/62540/chevrolet-corvette-z06-eu-version-2026-capa.jpg",
     "opcionais": [
       "Pacote Aero Z07 em Fibra de Carbono",
@@ -98,42 +109,106 @@
       "Rodas de Fibra de Carbono",
       "Performance Data Recorder (PDR)",
       "Bancos GT2 em Couro Nappa",
-      "Interior Completo em Couro e Alcantara Adicional",
-      "Suspensão Magnetic Selective Ride Control",
-      "Sistema de Elevação do Eixo Dianteiro (Front Lift)",
-      "Teto Removível em Fibra de Carbono Visible",
-      "Cinto de Segurança em Vermelho Racing"
+      "Sistema de Elevação do Eixo Dianteiro (Front Lift)"
     ]
   },
   {
     "id": 9,
-    "modelo": "R8",
+    "modelo": "R8 Performance V10",
     "marca": "Audi",
+    "ano": 2023,
     "foto": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80",
     "opcionais": [
       "Faróis Audi Laser Light",
       "Sideblades em Fibra de Carbono",
       "Sistema de Som Bang & Olufsen 3D",
-      "Direção Dinâmica Audi",
       "Capa do Motor em Fibra de Carbono",
       "Bancos Concha Audi Sport"
     ]
   },
   {
     "id": 10,
-    "modelo": "Huracán",
+    "modelo": "Huracán Evo",
     "marca": "Lamborghini",
+    "ano": 2024,
     "foto": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80",
     "opcionais": [
       "Sistema de Elevação de Suspensão (Lifting System)",
-      "Freios Carbon Ceramic com Pinças Vermelhas",
-      "Pacote Style em Preto Brilhante",
+      "Freios Carbon Ceramic com Pinças Azuis",
       "Escapamento em Titânio Racing",
       "Sistema Telemetria Lamborghini",
-      "Interface Smartphone (Apple CarPlay)",
-      "Volante em Alcantara com Costura Vermelha",
-      "Bancos Esportivos Ad Personam",
-      "Rodas Loge Forjadas 20\" com Travamento Central"
+      "Volante em Alcantara"
+    ]
+  },
+  {
+    "id": 11,
+    "modelo": "F8 Tributo",
+    "marca": "Ferrari",
+    "ano": 2023,
+    "foto": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80",
+    "opcionais": [
+      "Bancos Esportivos em Fibra de Carbono",
+      "Pinças de Freio em Azul Turbo",
+      "Elevador de Suspensão Dianteira",
+      "Display para o Passageiro",
+      "Contagiro em Amarelo Modena",
+      "Sistema de Exaustão Esportiva em Titânio"
+    ]
+  },
+  {
+    "id": 12,
+    "modelo": "720S Spider",
+    "marca": "McLaren",
+    "ano": 2024,
+    "foto": "https://images.unsplash.com/photo-1621135802920-133df287f89c?auto=format&fit=crop&w=800&q=80",
+    "opcionais": [
+      "Teto Rígido Retrátil Eletrocrômico",
+      "Pacote Externo Fibra de Carbono MSO",
+      "Sistema de Som Bowers & Wilkins de 12 Alto-Falantes",
+      "Câmeras de Estacionamento 360°",
+      "Escapamento Esportivo em Ligas Especiais"
+    ]
+  },
+  {
+    "id": 13,
+    "modelo": "Ninja H2R",
+    "marca": "Kawasaki",
+    "ano": 2024,
+    "foto": "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80",
+    "opcionais": [
+      "Compressor Supercharger de Alta Rotação",
+      "Carenagem Total em Fibra de Carbono",
+      "Asas Aerodinâmicas em Carbono",
+      "Painel de Instrumentos TFT Colorido Conectado",
+      "Quick Shifter Bi-Direcionais KQS"
+    ]
+  },
+  {
+    "id": 14,
+    "modelo": "GT-R Nismo",
+    "marca": "Nissan",
+    "ano": 2023,
+    "foto": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80",
+    "opcionais": [
+      "Capô e Teto em Fibra de Carbono",
+      "Turbinas do Carro de Corrida GT3",
+      "Bancos Recaro Concha em Carbono",
+      "Freios Carbono-Cerâmica Brembo Nismo",
+      "Escapamento em Titânio Fujitsubo"
+    ]
+  },
+  {
+    "id": 15,
+    "modelo": "Hayabusa 1300",
+    "marca": "Suzuki",
+    "ano": 2024,
+    "foto": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80",
+    "opcionais": [
+      "Sistema de Pilotagem Inteligente SIRS",
+      "Quick Shift Bi-Direcional",
+      "Modos de Entrega de Potência Selecionáveis",
+      "Pinças de Freio Brembo Stylema",
+      "Painel de Instrumentos TFT com Ângulo de Inclinação"
     ]
   }
 ]
