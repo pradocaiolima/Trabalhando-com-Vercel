@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Início - PRADO Cars{% endblock %}
+
+{% block content %}
+<style>
+    /* Seção Hero principal */
+    .hero-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 90px 20px;
+        min-height: 65vh;
+    }
+
+    /* Título estilizado em tom de vermelho e branco brilhante */
+    .hero-title {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 3.2rem;
+        font-weight: 900;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-style: italic;
+        
+        /* Cor de texto garantida com gradiente em tom vermelho/branco de alto contraste */
+        color: #ffffff;
+        background: linear-gradient(135deg, #ffffff 0%, #ff4d4d 50%, #dc2626 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        /* Sombra luminosa (Glow) para destacar sobre o fundo escuro */
+        filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.4));
+        
+        /* Animação de entrada suave */
+        opacity: 0;
+        transform: translateY(-30px);
+        animation: revealTitle 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Subtítulo em cor clara e nítida */
+    .hero-subtitle {
+        font-size: 1.15rem;
+        color: #cbd5e1;
+        max-width: 680px;
+        margin-bottom: 40px;
+        line-height: 1.7;
+        
+        /* Animação com leve atraso */
+        opacity: 0;
+        transform: translateY(20px);
+        animation: revealSubtitle 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+
+    /* Botão estilizado com animação */
+    .hero-btn {
+        opacity: 0;
+        transform: scale(0.9);
+        animation: revealBtn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    /* Keyframes das Animações */
+    @keyframes revealTitle {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes revealSubtitle {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes revealBtn {
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Responsivo para telemóveis */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.1rem;
+        }
+        .hero-subtitle {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+
+<div class="hero-section">
+    <!-- Frase de boas-vindas com gradiente e animação de revelação -->
+    <h1 class="hero-title">Bem-vindo à PRADO Cars</h1>
+    
+    <p class="hero-subtitle">
+        Descubra a excelência em alta performance. Explore o nosso showroom exclusivo com os supercarros mais cobiçados do mundo, combinando luxo absoluto, potência e sofisticação nas pistas e nas ruas.
+    </p>
+
+    <div class="hero-btn">
+        <a href="/veiculos" class="btn">Explorar Catálogo Completo</a>
+    </div>
+</div>
+{% endblock %}

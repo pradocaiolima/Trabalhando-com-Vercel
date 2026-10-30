@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}{{ veiculo.marca }} {{ veiculo.modelo }} - PRADO Cars{% endblock %}
+
+{% block content %}
+<style>
+    .detalhe-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .detalhe-header {
+        margin-bottom: 25px;
+    }
+
+    .detalhe-header span {
+        color: var(--red-primary);
+        font-size: 1rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .detalhe-header h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin: 5px 0 0 0;
+        color: var(--text-main);
+    }
+
+    .opcionais-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .opcionais-card h3 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.3rem;
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: var(--text-main);
+        border-bottom: 1px solid #222;
+        padding-bottom: 12px;
+    }
+
+    .grid-opcionais {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 15px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .item-opcional {
+        background-color: #080808;
+        border: 1px solid #1f1f1f;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.92rem;
+        color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: border-color 0.3s;
+    }
+
+    .item-opcional:hover {
+        border-color: var(--red-primary);
+    }
+
+    .icone-check {
+        color: var(--red-primary);
+        font-weight: bold;
+    }
+
+    .sem-opcionais {
+        color: var(--text-muted);
+        font-style: italic;
+    }
+</style>
+
+<div class="detalhe-container">
+    <div class="detalhe-header">
+        <span>{{ veiculo.marca }}</span>
+        <h1>{{ veiculo.modelo }}</h1>
+    </div>
+
+    <!-- Imagem do Veículo -->
+    <img src="{{ veiculo.foto }}" alt="{{ veiculo.modelo }}" class="detalhe-img">
+
+    <!-- Card de Opcionais -->
+    <div class="opcionais-card">
+        <h3>
+            Equipamentos e Opcionais 
+            <span style="font-size: 0.9rem; color: var(--text-muted); font-family: 'Inter', sans-serif;">
+                ({{ veiculo.opcionais | length }})
+            </span>
+        </h3>
+
+        {% if veiculo.opcionais and veiculo.opcionais | length > 0 %}
+            <ul class="grid-opcionais">
+                {% for opcional in veiculo.opcionais %}
+                    <li class="item-opcional">
+                        <span class="icone-check">&#10004;</span>
+                        {{ opcional }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="sem-opcionais">Este veículo possui a configuração padrão de fábrica sem opcionais adicionais cadastrados.</p>
+        {% endif %}
+
+        <div style="margin-top: 35px;">
+            <a href="/veiculos" class="btn btn-secundario">&larr; Voltar ao Catálogo</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

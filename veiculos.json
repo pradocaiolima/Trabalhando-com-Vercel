@@ -1,0 +1,139 @@
+[
+  {
+    "id": 1,
+    "modelo": "911 Carrera",
+    "marca": "Porsche",
+    "foto": "https://cdn.motor1.com/images/mgl/RqYwe3/s3/porsche-911-targa-4-gts-2024-im-test.webp",
+    "opcionais": [
+      "Freios de Cerâmica (PCCB)",
+      "Bancos Esportivos em Alcantara",
+      "Escapamento Esportivo Ativo",
+      "Teto Solar em Fibra de Carbono",
+      "Sistema de Som Burmester",
+      "Eixo Traseiro Esterçável",
+      "Pacote Crono Esporte"
+    ]
+  },
+  {
+    "id": 2,
+    "modelo": "Panamera",
+    "marca": "Porsche",
+    "foto": "https://motorshow.com.br/wp-content/uploads/sites/2/2026/09/porsche-panamera-turbo-s-e-hybrid-2027-42-scaled.jpg",
+    "opcionais": [
+      "Bancos Massageadores com Ventilação",
+      "Suspensão Pneumática Adaptativa",
+      "Visão Noturna com Câmera Térmica",
+      "Portas com Fechamento Suave (Soft-Close)"
+    ]
+  },
+  {
+    "id": 3,
+    "modelo": "M3 Competition",
+    "marca": "BMW",
+    "foto": "https://media.ed.edmunds-media.com/bmw/m3/2027/oem/2027_bmw_m3_sedan_competition-xdrive_fq_oem_1_815.jpg",
+    "opcionais": [
+      "Bancos Concha M Carbon",
+      "Faróis BMW Laserlight",
+      "Pacote Externo M Carbon",
+      "M Drive Professional",
+      "Head-Up Display",
+      "Rodas Forjadas Aro 20\"",
+      "Freios M Carbon Ceramic",
+      "Volante M em Alcantara"
+    ]
+  },
+  {
+    "id": 4,
+    "modelo": "S1000RR",
+    "marca": "BMW",
+    "foto": "https://impaktechusa.com/cdn/shop/articles/DSC02006_website.jpg?v=1770340896&width=1000",
+    "opcionais": [
+      "Pacote M Competition",
+      "Rodas de Carbono M",
+      "Kit de Chassi M",
+      "Ponteira de Escapamento Akrapovič em Titânio",
+      "Modos de Pilotagem Pro"
+    ]
+  },
+  {
+    "id": 5,
+    "modelo": "Panigale V4",
+    "marca": "Ducati",
+    "foto": "https://s3.amazonaws.com/altimus2.arquivos.prod/d74051f0-8614-4832-9289-23de8d19a7d0/fotos/veiculo/d91dcbd4-e97b-483a-95d4-6df5e8246e2c/80d92d4b94d7444b8b76d8a87ece0015_1791219027208.jpg",
+    "opcionais": []
+  },
+  {
+    "id": 6,
+    "modelo": "Mustang GT",
+    "marca": "Ford",
+    "foto": "https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/03/novo-mustang-gt.jpeg?w=1320&h=742&crop=0&quality=90",
+    "opcionais": [
+      "Suspensão MagneRide",
+      "Sistema de Som Bang & Olufsen",
+      "Escapamento com Válvula Ativa",
+      "Aerofólio Esportivo Traseiro",
+      "Painel Digital Configurável de 12.4\"",
+      "Freios Brembo de Alta Performance"
+    ]
+  },
+  {
+    "id": 7,
+    "modelo": "Camaro SS",
+    "marca": "Chevrolet",
+    "foto": "https://revistacarro.com.br/wp-content/uploads/2019/01/Camaro-11.jpg",
+    "opcionais": [
+      "Head-Up Display Colorido",
+      "Bancos Recaro com Ajuste Elétrico",
+      "Sistema de Som Bose"
+    ]
+  },
+  {
+    "id": 8,
+    "modelo": "Corvette Z06",
+    "marca": "Chevrolet",
+    "foto": "https://cdn.planetcarsz.com/carros/2026/09/62540/chevrolet-corvette-z06-eu-version-2026-capa.jpg",
+    "opcionais": [
+      "Pacote Aero Z07 em Fibra de Carbono",
+      "Freios de Carbono-Cerâmica Brembo",
+      "Rodas de Fibra de Carbono",
+      "Performance Data Recorder (PDR)",
+      "Bancos GT2 em Couro Nappa",
+      "Interior Completo em Couro e Alcantara Adicional",
+      "Suspensão Magnetic Selective Ride Control",
+      "Sistema de Elevação do Eixo Dianteiro (Front Lift)",
+      "Teto Removível em Fibra de Carbono Visible",
+      "Cinto de Segurança em Vermelho Racing"
+    ]
+  },
+  {
+    "id": 9,
+    "modelo": "R8",
+    "marca": "Audi",
+    "foto": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80",
+    "opcionais": [
+      "Faróis Audi Laser Light",
+      "Sideblades em Fibra de Carbono",
+      "Sistema de Som Bang & Olufsen 3D",
+      "Direção Dinâmica Audi",
+      "Capa do Motor em Fibra de Carbono",
+      "Bancos Concha Audi Sport"
+    ]
+  },
+  {
+    "id": 10,
+    "modelo": "Huracán",
+    "marca": "Lamborghini",
+    "foto": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80",
+    "opcionais": [
+      "Sistema de Elevação de Suspensão (Lifting System)",
+      "Freios Carbon Ceramic com Pinças Vermelhas",
+      "Pacote Style em Preto Brilhante",
+      "Escapamento em Titânio Racing",
+      "Sistema Telemetria Lamborghini",
+      "Interface Smartphone (Apple CarPlay)",
+      "Volante em Alcantara com Costura Vermelha",
+      "Bancos Esportivos Ad Personam",
+      "Rodas Loge Forjadas 20\" com Travamento Central"
+    ]
+  }
+]

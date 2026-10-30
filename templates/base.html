@@ -1,0 +1,324 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PRADO Cars - Showroom de Luxo{% endblock %}</title>
+    
+    <!-- Fonte Orbitron para um toque moderno/esportivo -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-base: #050505;
+            --bg-card: #0e0e0e;
+            --bg-card-hover: #161616;
+            --border-card: #222222;
+            --border-hover: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            --red-primary: #ef4444;
+            --red-hover: #dc2626;
+            --red-gradient: linear-gradient(135deg, #f87171 0%, #dc2626 50%, #991b1b 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-base);
+            /* Fundo com textura em linhas de velocidade dinâmicas e limpas */
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(239, 68, 68, 0.025) 0, rgba(239, 68, 68, 0.025) 1px, transparent 0, transparent 60px),
+                linear-gradient(180deg, #050505 0%, #0d0d0d 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            animation: fadeInPage 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInPage {
+            to { opacity: 1; }
+        }
+
+        /* Header estilo Showroom Premium */
+        header {
+            background-color: rgba(8, 8, 8, 0.9);
+            border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            padding: 18px 40px;
+        }
+
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 900;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-style: italic;
+            background: var(--red-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 15px rgba(239, 68, 68, 0.25);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .brand-logo:hover .brand-title {
+            transform: scale(1.05);
+        }
+
+        header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--red-primary);
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: var(--red-primary);
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 50px 20px;
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+
+        /* Barra de Filtros Estilizada */
+        .filtro-container {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #1f1f1f;
+        }
+
+        .filtro-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-card);
+            color: var(--text-muted);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .filtro-btn:hover, .filtro-btn.active {
+            background-color: var(--red-primary);
+            color: #ffffff;
+            border-color: var(--red-primary);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Grade de Veículos */
+        .grid-veiculos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Cards Estilo Showroom */
+        .veiculo-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .veiculo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--red-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .veiculo-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            background-color: var(--bg-card-hover);
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
+        }
+
+        .veiculo-card:hover::before {
+            opacity: 1;
+        }
+
+        .veiculo-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .veiculo-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-body h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.35rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+        }
+
+        .card-body p {
+            color: var(--text-muted);
+            margin: 0 0 24px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Imagem de Detalhes com Efeito Imersivo */
+        .detalhe-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--border-card);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            margin-bottom: 30px;
+            transition: transform 0.5s ease;
+        }
+
+        .detalhe-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Botões de Alta Performance com Efeito Glow */
+        .btn {
+            display: inline-block;
+            background: var(--red-gradient);
+            color: #ffffff;
+            padding: 13px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.35);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 22px rgba(220, 38, 38, 0.55);
+            opacity: 0.95;
+        }
+
+        .btn-secundario {
+            background: transparent;
+            border: 2px solid var(--red-primary);
+            color: var(--red-primary);
+            box-shadow: none;
+        }
+
+        .btn-secundario:hover {
+            background: var(--red-gradient);
+            color: #ffffff;
+        }
+
+        /* Rodapé Elegante */
+        footer {
+            background-color: #030303;
+            border-top: 1px solid #151515;
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="brand-logo">
+                <span class="brand-title">PRADO Cars</span>
+            </a>
+
+            <nav>
+                <a href="/">Início</a>
+                <a href="/veiculos">Catálogo de Veículos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 PRADO Cars - Todos os direitos reservados. Movidos pela performance.</p>
+    </footer>
+</body>
+</html>

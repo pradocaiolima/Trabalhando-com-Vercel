@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}Catálogo de Veículos - PRADO Cars{% endblock %}
+
+{% block content %}
+<style>
+    .catalogo-header {
+        margin-bottom: 35px;
+    }
+
+    .catalogo-header h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.2rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        background: var(--red-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .catalogo-header p {
+        color: var(--text-muted);
+        font-size: 1rem;
+    }
+
+    /* Barra de Filtros Avançada */
+    .filtros-box {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-bottom: 35px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) 120px;
+        gap: 20px;
+        align-items: end;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .filtro-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .filtro-group label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .filtro-control {
+        background-color: #080808;
+        border: 1px solid #262626;
+        color: var(--text-main);
+        padding: 12px 15px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .filtro-control:focus {
+        border-color: var(--red-primary);
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.25);
+    }
+
+    .btn-limpar {
+        background: transparent;
+        border: 1px solid #333333;
+        color: var(--text-muted);
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+        height: 46px;
+    }
+
+    .btn-limpar:hover {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        border-color: var(--red-primary);
+    }
+
+    /* Mensagem de nenhum resultado encontrado */
+    .sem-resultados {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 60px 20px;
+        background-color: var(--bg-card);
+        border: 1px dashed var(--border-card);
+        border-radius: 12px;
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        display: none;
+    }
+
+    /* Badge de ano nos cards */
+    .card-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border: 1px solid var(--red-primary);
+        color: #ffffff;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        backdrop-filter: blur(4px);
+    }
+</style>
+
+<div class="catalogo-header">
+    <h1>Showroom de Veículos</h1>
+    <p>Filtre por marca, modelo ou ano e selecione um superesportivo para ver todas as especificações.</p>
+</div>
+
+<!-- Caixa de Filtros de Navegação -->
+<div class="filtros-box">
+    <!-- Filtro por Marca -->
+    <div class="filtro-group">
+        <label for="filtroMarca">Marca</label>
+        <select id="filtroMarca" class="filtro-control" onchange="filtrarVeiculos()">
+            <option value="">Todas as Marcas</option>
+            {% set marcas = veiculos | map(attribute='marca') | unique | sort %}
+            {% for marca in marcas %}
+            <option value="{{ marca }}">{{ marca }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Filtro por Modelo (Pesquisa em texto) -->
+    <div class="filtro-group">
+        <label for="filtroModelo">Modelo</label>
+        <input type="text" id="filtroModelo" class="filtro-control" placeholder="Ex: 911, M3, Huracán..." onkeyup="filtrarVeiculos()">
+    </div>
+
+    <!-- Filtro por Ano -->
+    <div class="filtro-group">
+        <label for="filtroAno">Ano</label>
+        <select id="filtroAno" class="filtro-control" onchange="filtrarVeiculos()">
+            <option value="">Todos os Anos</option>
+            {% set anos = veiculos | map(attribute='ano') | unique | sort(reverse=True) %}
+            {% for ano in anos %}
+            <option value="{{ ano }}">{{ ano }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Botão Limpar Filtros -->
+    <button class="btn-limpar" onclick="limparFiltros()">Limpar</button>
+</div>
+
+<!-- Grade de Veículos -->
+<div class="grid-veiculos" id="gridVeiculos">
+    {% for veiculo in veiculos %}
+    <div class="veiculo-card" 
+         data-marca="{{ veiculo.marca | lower }}" 
+         data-modelo="{{ veiculo.modelo | lower }}" 
+         data-ano="{{ veiculo.ano }}">
+         
+        <!-- Imagem e Etiqueta de Ano -->
+        <div style="position: relative;">
+            <img src="{{ veiculo.foto }}" alt="{{ veiculo.marca }} {{ veiculo.modelo }}" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80'">
+            <span class="card-badge">{{ veiculo.ano }}</span>
+        </div>
+        
+        <div class="card-body">
+            <span style="color: var(--red-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">{{ veiculo.marca }}</span>
+            <h3>{{ veiculo.modelo }}</h3>
+            <p>Ano: {{ veiculo.ano }} &bull; ID: {{ veiculo.id }}</p>
+            
+            <a href="/veiculo/{{ veiculo.id }}" class="btn">Ver Especificações</a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Mensagem de Alerta quando nenhum carro corresponde -->
+    <div id="semResultadosMsg" class="sem-resultados">
+        Nenhum veículo encontrado com os filtros selecionados. Tente refinar a busca.
+    </div>
+</div>
+
+<script>
+    function filtrarVeiculos() {
+        const marcaSelecionada = document.getElementById('filtroMarca').value.toLowerCase();
+        const modeloTexto = document.getElementById('filtroModelo').value.toLowerCase().trim();
+        const anoSelecionado = document.getElementById('filtroAno').value;
+
+        const cards = document.querySelectorAll('.veiculo-card');
+        let visiveis = 0;
+
+        cards.forEach(card => {
+            const marcaCard = card.getAttribute('data-marca');
+            const modeloCard = card.getAttribute('data-modelo');
+            const anoCard = card.getAttribute('data-ano');
+
+            const atendeMarca = !marcaSelecionada || marcaCard === marcaSelecionada;
+            const atendeModelo = !modeloTexto || modeloCard.includes(modeloTexto);
+            const atendeAno = !anoSelecionado || anoCard === anoSelecionado;
+
+            if (atendeMarca && atendeModelo && atendeAno) {
+                card.style.display = "flex";
+                visiveis++;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        // Mostra ou oculta a mensagem de nenhum resultado
+        const msgVazia = document.getElementById('semResultadosMsg');
+        if (visiveis === 0) {
+            msgVazia.style.display = "block";
+        } else {
+            msgVazia.style.display = "none";
+        }
+    }
+
+    function limparFiltros() {
+        document.getElementById('filtroMarca').value = "";
+        document.getElementById('filtroModelo').value = "";
+        document.getElementById('filtroAno').value = "";
+        filtrarVeiculos();
+    }
+</script>
+{% endblock %}
